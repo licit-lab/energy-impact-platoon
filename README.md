@@ -1,10 +1,10 @@
 
 **| [Overview](#overview) | [Structure](#structure) | [Launching simulations](#launching-simulations) | [External tools](#external-tools) | [License](#license) | [Contact](#contact) |**
 
-# Fuel consumption efficiency impact of truck platooning strategies
+# Impact Platooning Environment
 
 
-**Fuel consumption efficiency impact of truck platooning strategiess**
+**Fuel consumption efficiency impact of truck platooning strategies**
 
 Andres Ladino, Aurelien Duret, Nour-Eddin El Faouzi
 
