@@ -4,13 +4,13 @@
 # Fuel consumption efficiency impact of truck platooning strategies
 
 
-**A hierarchical approach for splitting truck platoons near network discontinuities**
+**Fuel consumption efficiency impact of truck platooning strategiess**
 
 Andres Ladino, Aurelien Duret, Nour-Eddin El Faouzi
 
 ## Overview 
 
-This repository contains source code used to generate the example in *"Fuel consumption efficiency impact of truck platooning strategiess"* by [Andres Ladino](https://github.com/aladinoster),  [Aurelien Duret](https://www.researchgate.net/profile/Aurelien_Duret) and [Nour Eddin-](https://scholar.google.fr/citations?user=uiMicVIAAAAJ&hl=fr). 
+This repository contains source code used to generate the example in *"Fuel consumption efficiency impact of truck platooning strategiess"* by [Andres Ladino](https://github.com/aladinoster),  [Aurelien Duret](https://www.researchgate.net/profile/Aurelien_Duret) and [Nour-Eddin El Faouzi](https://scholar.google.fr/citations?user=uiMicVIAAAAJ&hl=fr). 
 
 ## Structure 
 
@@ -22,10 +22,10 @@ Please find more details in this [Notebook](Output/00-Menu.ipynb)
 
 ### Locally 
 
-Locally you are able to reproduce this result and visualize the with case under *control* and the *uncontrolled* situation
+Locally you are able to reproduce this result and visualize the curves observed in the publication from the repository 
 
 ```
-git clone https://github.com/research-licit/ISTTT2019.git
+https://github.com/research-licit/Energy-Impact-Platoon.git
 ```
 
 ## External tools
@@ -35,8 +35,8 @@ git clone https://github.com/research-licit/ISTTT2019.git
 
 ## License
 
-These notebooks are licensed under [MIT License]()
+These notebooks are licensed under [MIT License](https://github.com/research-licit/Energy-Impact-Platoon/blob/master/LICENSE)
 
 ## Contact 
 
-If you run into problems or bugs, please let us know by [creating an issue](https://github.com/research-licit/ISTTT2019/issues/new) an issue in this repository.
+If you run into problems or bugs, please let us know by [creating an issue](https://github.com/research-licit/Energy-Impact-Platoon/issues/new) an issue in this repository.
