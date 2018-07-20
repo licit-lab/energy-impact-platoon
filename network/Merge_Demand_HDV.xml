@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT_SYMUBRUIT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="reseau.xsd" version="2.05">
+    <SIMULATIONS>
+        <SIMULATION id="simID" pasdetemps="0.1" debut="07:00:00" fin="07:02:00" loipoursuite="exacte" comportementflux="iti" date="2018-04-27" titre="CAV-HDV-merging" proc_deceleration="false" seed="1">
+            <RESTITUTION trace_route="false" trajectoires="true" debug="false" debug_matrice_OD="false" debug_SAS="false" csv="true"/>
+        </SIMULATION>
+    </SIMULATIONS>
+    <TRAFICS>
+        <TRAFIC id="trafID" accbornee="true" coeffrelax="2.0" chgtvoie_ghost="false">
+            <TRONCONS>
+                <TRONCON id="In_main"/>
+                <TRONCON id="In_onramp"/>
+                <TRONCON id="Merge_zone"/>
+                <TRONCON id="Out_main"/>
+            </TRONCONS>
+            <TYPES_DE_VEHICULE>
+                <TYPE_DE_VEHICULE id="CAV" w="-6.25" kx="0.16" vx="25">
+                    <ACCELERATION_PLAGES>
+                        <ACCELERATION_PLAGE ax="1.5" vit_sup="5.8"/>
+                        <ACCELERATION_PLAGE ax="1" vit_sup="8"/>
+                        <ACCELERATION_PLAGE ax="0.5" vit_sup="infini"/>
+                    </ACCELERATION_PLAGES>
+                </TYPE_DE_VEHICULE>
+                <TYPE_DE_VEHICULE id="HDV" w="-6.25" kx="0.08960000000000001" vx="25">
+                    <ACCELERATION_PLAGES>
+                        <ACCELERATION_PLAGE ax="1.5" vit_sup="5.8"/>
+                        <ACCELERATION_PLAGE ax="1" vit_sup="8"/>
+                        <ACCELERATION_PLAGE ax="0.5" vit_sup="infini"/>
+                    </ACCELERATION_PLAGES>
+                </TYPE_DE_VEHICULE>
+            </TYPES_DE_VEHICULE>
+            <EXTREMITES>
+                <EXTREMITE id="Ext_In_main" typeCreationVehicule="demande">
+                    <FLUX_GLOBAL>
+                        <FLUX>
+                            <DEMANDES>
+                                <DEMANDE niveau="0.8" duree="10"/>
+                                <DEMANDE niveau="0" duree="100"/>
+                            </DEMANDES>
+                            <REP_DESTINATIONS>
+                                <REP_DESTINATION>
+                                    <DESTINATION coeffOD="1" sortie="Ext_Out_main"/>
+                                </REP_DESTINATION>
+                            </REP_DESTINATIONS>
+                        </FLUX>
+                        <REP_TYPEVEHICULES>
+                            <REP_TYPEVEHICULE coeffs="1 0" duree="11"/>
+                            <REP_TYPEVEHICULE coeffs="1 0" duree="109"/>
+                        </REP_TYPEVEHICULES>
+                    </FLUX_GLOBAL>
+                </EXTREMITE>
+                <EXTREMITE id="Ext_In_onramp" typeCreationVehicule="demande">
+                    <FLUX_GLOBAL>
+                        <FLUX>
+                            <DEMANDES>
+                                <DEMANDE niveau="0" duree="4"/>
+                                <DEMANDE niveau="0.25" duree="10"/>
+                                <DEMANDE niveau="0" duree="105"/>
+                            </DEMANDES>
+                            <REP_DESTINATIONS>
+                                <REP_DESTINATION>
+                                    <DESTINATION coeffOD="1" sortie="Ext_Out_main"/>
+                                </REP_DESTINATION>
+                            </REP_DESTINATIONS>
+                        </FLUX>
+                        <REP_TYPEVEHICULES>
+                            <REP_TYPEVEHICULE coeffs="0 1" duree="5"/>
+                            <REP_TYPEVEHICULE coeffs="0 1" duree="10"/>
+                            <REP_TYPEVEHICULE coeffs="0 1" duree="105"/>                            
+                        </REP_TYPEVEHICULES>
+                    </FLUX_GLOBAL>
+                </EXTREMITE>
+                <EXTREMITE id="Ext_Out_main"/>
+            </EXTREMITES>
+            <CONNEXIONS_INTERNES>
+                <CONNEXION_INTERNE id="Spl_merge_area_end"/>
+                <CONNEXION_INTERNE id="Spl_merge_area_start"/>
+            </CONNEXIONS_INTERNES>
+        </TRAFIC>
+    </TRAFICS>
+    <RESEAUX>
+        <RESEAU id="resID">
+            <TRONCONS>
+                <TRONCON id="In_main" id_eltamont="Ext_In_main" id_eltaval="Spl_merge_area_start" extremite_amont="-1000.000000 146.500000" extremite_aval="0.00000 148.0" largeur_voie="3"/>
+                <TRONCON id="In_onramp" id_eltamont="Ext_In_onramp" id_eltaval="Spl_merge_area_start" extremite_amont="-900.000000 62.000000" extremite_aval="0.00000 145.0" largeur_voie="3"/>
+                <TRONCON id="Merge_zone" id_eltamont="Spl_merge_area_start" id_eltaval="Spl_merge_area_end" extremite_amont="0.000000 146.500000" extremite_aval="100.000000 146.500000" nb_voie="2" largeur_voie="3" chgtvoie_dstfin="50" chgtvoie_dstfin_force="-1e+20" chgt_voie_droite="false"/>
+                <TRONCON id="Out_main" id_eltamont="Spl_merge_area_end" id_eltaval="Ext_Out_main" extremite_amont="100.000000 146.500000" extremite_aval="1100.000000 146.500000" largeur_voie="3"/>
+            </TRONCONS>
+            <CONNEXIONS>
+                <EXTREMITES>
+                    <EXTREMITE id="Ext_In_main"/>
+                    <EXTREMITE id="Ext_In_onramp"/>
+                    <EXTREMITE id="Ext_Out_main"/>
+                </EXTREMITES>
+                <REPARTITEURS>
+                    <REPARTITEUR id="Spl_merge_area_end">
+                        <MOUVEMENTS_AUTORISES>
+                            <MOUVEMENT_AUTORISE id_troncon_amont="Merge_zone" num_voie_amont="2">
+                                <MOUVEMENT_SORTIES>
+                                    <MOUVEMENT_SORTIE id_troncon_aval="Out_main"/>
+                                </MOUVEMENT_SORTIES>
+                            </MOUVEMENT_AUTORISE>
+  
+                        </MOUVEMENTS_AUTORISES>
+                    </REPARTITEUR>
+                    <REPARTITEUR id="Spl_merge_area_start">
+                        <MOUVEMENTS_AUTORISES>
+                            <MOUVEMENT_AUTORISE id_troncon_amont="In_onramp">
+                                <MOUVEMENT_SORTIES>
+                                    <MOUVEMENT_SORTIE id_troncon_aval="Merge_zone"/>
+                                </MOUVEMENT_SORTIES>
+                            </MOUVEMENT_AUTORISE>
+                            <MOUVEMENT_AUTORISE id_troncon_amont="In_main">
+                                <MOUVEMENT_SORTIES>
+                                    <MOUVEMENT_SORTIE id_troncon_aval="Merge_zone" num_voie_aval="2"/>
+                                </MOUVEMENT_SORTIES>
+                            </MOUVEMENT_AUTORISE>
+                        </MOUVEMENTS_AUTORISES>
+                    </REPARTITEUR>
+                </REPARTITEURS>
+                <GIRATOIRES/>
+                <CARREFOURSAFEUX/>
+            </CONNEXIONS>
+            <PARAMETRAGE_VEHICULES_GUIDES/>
+        </RESEAU>
+    </RESEAUX>
+    <SCENARIOS>
+        <SCENARIO id="defaultScenario" simulation_id="simID" trafic_id="trafID" reseau_id="resID" dirout="SymOut" prefout="SymOutFile"/>
+    </SCENARIOS>
+</ROOT_SYMUBRUIT>
