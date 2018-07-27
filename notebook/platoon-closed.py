@@ -5,7 +5,7 @@
 import numpy as np
 
 # Platoon length
-N = 4
+N = 8
 
 # Truck parameters 
 L_AVG = 18
@@ -342,9 +342,12 @@ if __name__ == "__main__":
 
 
 
-    for i, x in enumerate(zip(mRef,range(28))):
+    for i, x in enumerate(zip(mRef,range(2000))):
         
         if i < len(mRef)-1:
+            
+            mRefW = mRef[i:i+H,:]
+            mThetaW = np.zeros((H,N))
 
             print(f'Iteration:{i}')
 
@@ -365,5 +368,5 @@ if __name__ == "__main__":
             mU[i] = aU
     
     np.savetxt('../output/space.csv', mS, fmt = '%.4f', delimiter='\t', newline='\n')
-    np.savetxt('../output/ref.csv', mRefW*V_P+L_AVG, fmt = '%.4f', delimiter='\t', newline='\n')
+    np.savetxt('../output/ref.csv', mRef*V_P+L_AVG, fmt = '%.4f', delimiter='\t', newline='\n')
     np.savetxt('../output/control.csv', mU, fmt = '%.4f', delimiter='\t', newline='\n')
