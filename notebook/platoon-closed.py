@@ -1,5 +1,12 @@
 """
     Fuel consumption analysis for Truck platooning
+    
+    This script runs an scenario of 4 trucks in platoon mood where
+    particular splits are determined. 
+    
+    In order to use: python platoon-closed.py 
+    
+    Check output files in: ../output/
 """
 
 import numpy as np
